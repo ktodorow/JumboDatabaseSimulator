@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JumboDatabaseSimulator", "JumboCheckoutSimulator\JumboDatabaseSimulator.csproj", "{997DC243-A87D-482B-A202-231162E9A332}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{997DC243-A87D-482B-A202-231162E9A332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997DC243-A87D-482B-A202-231162E9A332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997DC243-A87D-482B-A202-231162E9A332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997DC243-A87D-482B-A202-231162E9A332}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E4DF4D6-707E-479D-932F-43AFCD1ABB2B}
+	EndGlobalSection
+EndGlobal
