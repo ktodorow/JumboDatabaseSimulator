@@ -33,18 +33,23 @@
                         cmd = string.Empty;
                         CheckStaff(staff, staffCode, cmd);
                         Console.Clear();
-                        break;       
+                        break;
+                    case "9":
+                        cmd = string.Empty;
+                        RemoveStaff(staff,staffCode, cmd);
+                        Console.Clear(); 
+                        break;
                 }
 
                 Menu();
             }
         }
 
-        static void PrintLogo()
+        public static void PrintLogo()
         {
             Console.WriteLine("             (((((((*,    ,///*..  ,///*. ........      ........  ............. \r\n            ((((((((((% *///////&*,/////*#////////*    *///////*,,*************,..%%%%%%%%%%(, \r\n            (((((((((((#///////(@.///////%//////////**//////////#/******/********(%%%%%%%%%%%%%#    \r\n            *((((((((((&//////(@..///////(///////////////////////%*****/% .*******&%&@/,%%%%%%%%&   \r\n      /((((((,(((((((((%//////%/ ,///////%///////////////////////(#**************%%%%(.%%%%%%%%%%/  \r\n    /(((((((#&*((((((((#(////////////////@////////////////////////&************&#%%%%%%%%%%%%%%%%/  \r\n    ((((((((@,(((((((((%(///////////////@/////////////////////////&*****#%*******(%%%%%%%%%%%%%%&/  \r\n    (((((((((((((((((((&///////////////@//////////////////////////&*****&* *******&%%%%%%%%%%%%%@   \r\n     #((((((((((((((((@//////////////%#////////(@//////(@,////////%***************&%%%%%%%%%%%@%    \r\n      .((((((((((((#@/  ./////////#@(  *///////@/ ,(/(%%.  //////@/*************/&%%%%%%%%%%@#      \r\n         ./#%%%&%(,         .***,.        /##(,               ,*.   ,#(//****(&&/  ,/(((/,   ");
         }
-        static void Menu()
+        public static void Menu()
         {
             PrintLogo();
             Console.WriteLine();
@@ -55,7 +60,7 @@
             Console.WriteLine();
             Console.Write("Choose an option(number): ");
         }
-        static void MenuInLoop()
+        public static void MenuInLoop()
         {
             Console.Clear();
             PrintLogo();
@@ -65,7 +70,7 @@
                 Console.WriteLine();
             }
         }
-        static void AddStaff(List<string> staffList, List<int> codeList, string commandStr)
+        public static void AddStaff(List<string> staffList, List<int> codeList, string commandStr)
         {
             Console.Write("How much workers you would add?: ");
             int n = int.Parse(Console.ReadLine());
@@ -127,17 +132,18 @@
             }
         }
         
-        static void CheckStaff(List<string> staff, List<int> code,string commandStr)
+        public static void CheckStaff(List<string> staff, List<int> code,string commandStr)
         {
             Console.WriteLine("1. Search by a code             3. Back.");
             Console.WriteLine("2. Print all staff");
             Console.Write("Choose an option(number): ");
+            string newCommand = string.Empty;
             while ((commandStr = Console.ReadLine()) != "3")
             {
                 if (commandStr == "1")
                 {
                     Console.WriteLine("Enter a code: ");
-                    string newCommand = Console.ReadLine();
+                    newCommand = Console.ReadLine();
 
                     if (code.Contains(int.Parse(newCommand)))
                     {
@@ -149,14 +155,47 @@
                         Console.WriteLine("Not found.");
                         continue;
                     }
+                    
                 }
                 else if (commandStr == "2")
                 {
+                    if (code.Count <= 0)
+                    {
+                        Console.Write("Where's your staff? Add some? :) (y/n): ");
+                        newCommand = Console.ReadLine();
+
+                        if (newCommand == "y")
+                        {
+                            AddStaff(staff, code, commandStr);
+                        }
+                    }
                     Console.WriteLine(string.Join(" ", staff));
                 }
 
                 Console.Write("Choose an option(number): ");
             }
+        }
+
+        public static void RemoveStaff(List<string> staff, List<int> code, string commandStr)
+        {
+            Console.WriteLine("Enter a code('exit' - back to menu): ");
+
+            while ((commandStr = Console.ReadLine()) != "exit")
+            {
+                if (code.Contains(int.Parse(commandStr)))
+                {
+                    int index = code.IndexOf(int.Parse(commandStr));
+                    staff.RemoveAt(index);
+                    code.RemoveAt(index);
+                    Console.WriteLine("Removed successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Not found.");
+                    continue;
+                }
+            }
+              
         }
     }
 }
